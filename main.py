@@ -9,13 +9,13 @@ import json
 import os
 
 base_url = 'https://eatasmr.com'
-cookie = os.environ.get("cookie_smzdm")
+cookie = os.environ.get("cookie_eatASMR")
 
 
 def getLoginUrl():
     url = 'https://eatasmr.com/tasks/attendance'
     headers = {
-        "cookie": "__cfduid=d51180d886c844c92497b91b586a96d651615442443; wordpress_logged_in_bbae6ecd47232ff70d42a5fbe3863254=techoc%7C1616652162%7CBxWNBaXOKkycPdXcLmWkiHdmJEjhYsVSbV4uksZRS5n%7Ce9245b73a2581ade6301500889d96ac06bfdf35b893025f9ad28376ea979f6a8; comment_author_email_bbae6ecd47232ff70d42a5fbe3863254=techoc76@gmail.com; comment_author_bbae6ecd47232ff70d42a5fbe3863254=techoc; eatAgeCheck=1; EATSESSID=fjuevvk1jaj3cgelsco9fqs15i",
+        "cookie": cookie,
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36 Edg/80.0.361.69",
         "referer": "https://eatasmr.com/"
 
@@ -32,7 +32,7 @@ def login(path):
     url = "https://eatasmr.com/tasks/attendance?a=check&__v=cd4993e6fe"
     print(url)
     headers = {
-        "cookie": "__cfduid=d51180d886c844c92497b91b586a96d651615442443; wordpress_logged_in_bbae6ecd47232ff70d42a5fbe3863254=techoc%7C1616652162%7CBxWNBaXOKkycPdXcLmWkiHdmJEjhYsVSbV4uksZRS5n%7Ce9245b73a2581ade6301500889d96ac06bfdf35b893025f9ad28376ea979f6a8; comment_author_email_bbae6ecd47232ff70d42a5fbe3863254=techoc76@gmail.com; comment_author_bbae6ecd47232ff70d42a5fbe3863254=techoc; eatAgeCheck=1; EATSESSID=fjuevvk1jaj3cgelsco9fqs15i",
+        "cookie": cookie,
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36 Edg/80.0.361.69",
         "referer": "https://eatasmr.com/tasks/attendance"
 
@@ -46,4 +46,7 @@ def login(path):
 
 # 按间距中的绿色按钮以运行脚本。
 if __name__ == '__main__':
-    getLoginUrl()
+    if cookie:
+        print("----------eatASMR开始尝试签到----------")
+        getLoginUrl()
+        print("----------eatASMR签到执行完毕----------")

@@ -6,10 +6,13 @@ name: Python application
 on:
   schedule:
     - cron: '0 8 * * *'
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -21,9 +24,8 @@ jobs:
     - name: Install dependencies
       run: |
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: set env
+    - name: main
       env:
         cookie_eatASMR:${{ secrets.cookie_eatASMR }}
-    - name: main
       run: |
         python main.py
