@@ -26,6 +26,6 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: main
       env:
-        cookie_eatASMR:${{ secrets.cookie_eatASMR }}
+        cookie_eatASMR: ${{ secrets.cookie_eatASMR }}
       run: |
         python main.py
